@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визуальная новелла</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="menu">
+        <button class="menu-button" onclick="toggleMusic()">Музыка: Вкл</button>
+        <button class="menu-button" onclick="toggleVoice()">Озвучка: Вкл</button>
+        <button class="menu-button" onclick="startGame()">Начать игру</button>
+    </div>
+    <div id="game-container" style="display: none;">
+        <div id="background"></div>
+        <div id="text-box" onclick="nextScene()"></div>
+    </div>
+
+    <audio id="music" loop>
+        <!-- Вставьте ссылку на музыку -->
+    </audio>
+    <audio id="voice">
+        <!-- Вставьте ссылку на озвучку -->
+    </audio>
+
+    <script src="game.js"></script>
+    <script src="music.js"></script>
+</body>
+</html>
