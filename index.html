@@ -4,14 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Визуальная новелла</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/birn-outside-a-bag-of-/css/style.css" />
 </head>
 <body>
-    <div id="menu">
-        <button class="menu-button" onclick="toggleMusic()">Музыка: Вкл</button>
-        <button class="menu-button" onclick="toggleVoice()">Озвучка: Вкл</button>
-        <button class="menu-button" onclick="startGame()">Начать игру</button>
-    </div>
+    <canvas id="stars"></canvas>
+    <div class="menu-container">
+        <div class="typing">
+            <h1 class="text">НАЗВАНИЕ ИГРЫ НАХУЙ!!!</h1>
+        </div>
+        <button class="bubbly-button" onclick="startGame()">Начать игру</button>
+        <button class="bubbly-button" onclick="openSettings()">Настройки</button>
+        <button class="bubbly-button" onclick="exitGame()">Выйти к хуям</button>
+      </div>
+      <div id="settings-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeSettings()">&times;</span>
+          <h2>НАСТРОЙКИ</h2>
+          <label>
+            <input type="checkbox" id="music-toggle"> Music
+          </label>
+          <label>
+            <input type="checkbox" id="sound-toggle"> Sound Effects
+          </label>
+        </div>
+      </div>
     <div id="game-container" style="display: none;">
         <div id="background"></div>
         <div id="text-box" onclick="nextScene()"></div>
@@ -23,8 +39,10 @@
     <audio id="voice">
         <!-- Вставьте ссылку на озвучку -->
     </audio>
-
-    <script src="game.js"></script>
-    <script src="music.js"></script>
+    <!-- <script src="/birn-outside-a-bag-of-/js/script.js"></script> -->
+     <script src="/birn-outside-a-bag-of-/js/background.js"></script>
+     <script src="/birn-outside-a-bag-of-/js/script.js"
+    <script src="/birn-outside-a-bag-of-/js/game.js"></script>
+    <script src="/birn-outside-a-bag-of-/js/music.js"></script>
 </body>
 </html>
