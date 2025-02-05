@@ -1,5 +1,5 @@
 // Анимация кнопок
-var animateButton = function (e) {
+let animateButton = function (e) {
     e.preventDefault;
     e.target.classList.remove('animate');
     e.target.classList.add('animate');
@@ -38,15 +38,15 @@ var animateButton = function (e) {
   });
 
 
-  var wrapper = document.querySelector(".typing");
-  var text = document.querySelector(".typing .text");
-  var textCont = text.textContent;
+  let wrapper = document.querySelector(".typing");
+  let text = document.querySelector(".typing .text");
+  let textCont = text.textContent;
   text.style.display = "none";
-  for (var i = 0; i < textCont.length; i++) {
+  for (let i = 0; i < textCont.length; i++) {
       (function(i) {
           setTimeout(function() {
-              var texts = document.createTextNode(textCont[i])
-              var span = document.createElement('span');
+              let texts = document.createTextNode(textCont[i])
+              let span = document.createElement('span');
               span.appendChild(texts);
               wrapper.appendChild(span);
           }, 75 * i);
