@@ -167,21 +167,21 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px; /* Высота текстового окна */
-    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
-    color: white; /* Цвет текста */
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
     padding: 20px;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     font-size: 18px;
     line-height: 1.5;
-    border-top: 2px solid #fff; /* Белая рамка сверху */
+    border-top: 2px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    cursor: pointer; /* Курсор в виде указателя */
-    transition: opacity 0.5s ease-in-out; /* Плавное появление текста */
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
 }
   
   .close {

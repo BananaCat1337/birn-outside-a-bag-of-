@@ -1,6 +1,6 @@
 let scenes = [
     { text: "Добро пожаловать в новеллу!", bg: "url('background1.jpg')", voice: "voice1.mp3" },
-    { text: "Это вторая сцена.", bg: "url('background2.jpg')", voice: "voice2.mp3" },
+    { text: "В этой истории можно встретить все то, что пришлось делать не по планам, которые мы изначально ставили", bg: "url('background2.jpg')", voice: "voice2.mp3" },
     { text: "Финал истории.", bg: "url('background3.jpg')", voice: "voice3.mp3" }
 ];
 let currentScene = 0;
@@ -21,13 +21,12 @@ function nextScene() {
     let scene = scenes[currentScene];
     document.getElementById('background').style.backgroundImage = scene.bg;
 
-    // Анимация появления текста
     let textBox = document.getElementById('text-box');
-    textBox.style.opacity = 0; // Сначала текст невидим
+    textBox.style.opacity = 0;
     setTimeout(() => {
         textBox.innerText = scene.text;
-        textBox.style.opacity = 1; // Постепенно появляется
-    }, 200); // Задержка для плавного появления
+        textBox.style.opacity = 1;
+    }, 200);
 
     if (voiceEnabled) playVoice(scene.voice);
     currentScene++;
