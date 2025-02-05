@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Визуальная новелла</title>
-    <link rel="stylesheet" href="/birn-outside-a-bag-of-/css/style.css" />
-</head>
-<body>
-    <canvas id="stars"></canvas>
-    <div class="menu-container">
-        <div class="typing">
-            <h1 class="text">НАЗВАНИЕ ИГРЫ НАХУЙ!!!</h1>
-        </div>
-        <button class="bubbly-button" onclick="startGame()">Начать игру</button>
-        <button class="bubbly-button" onclick="openSettings()">Настройки</button>
-        <button class="bubbly-button" onclick="exitGame()">Выйти к хуям</button>
-      </div>
-      <div id="settings-modal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeSettings()">&times;</span>
-          <h2>НАСТРОЙКИ</h2>
-          <label>
-            <input type="checkbox" id="music-toggle"> Music
-          </label>
-          <label>
-            <input type="checkbox" id="sound-toggle"> Sound Effects
-          </label>
-        </div>
-      </div>
-    <div id="game-container" style="display: none;">
-        <div id="background"></div>
-        <div id="text-box" onclick="nextScene()"></div>
-    </div>
 
-    <audio id="music" loop>
-        <!-- Вставьте ссылку на музыку -->
-    </audio>
-    <audio id="voice">
-        <!-- Вставьте ссылку на озвучку -->
-    </audio>
-    <!-- <script src="/birn-outside-a-bag-of-/js/script.js"></script> -->
-     <script src="/birn-outside-a-bag-of-/js/background.js"></script>
-     <script src="/birn-outside-a-bag-of-/js/script.js"
-    <script src="/birn-outside-a-bag-of-/js/game.js"></script>
-    <script src="/birn-outside-a-bag-of-/js/music.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Визуальная новелла</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+  <div class="menu-container">
+    <div class="typing">
+      <h1 class="text">НАЗВАНИЕ ИГРЫ НАХУЙ!!!</h1>
+    </div>
+    <button class="bubbly-button" onclick="startGame()">Начать игру</button>
+    <button class="bubbly-button" onclick="openSettings()">Настройки</button>
+    <button class="bubbly-button" onclick="exitGame()">Выйти к хуям</button>
+  </div>
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSettings()">&times;</span>
+      <h2>НАСТРОЙКИ</h2>
+      <label>
+        <input type="checkbox" id="music-toggle"> Music
+      </label>
+      <label>
+        <input type="checkbox" id="sound-toggle"> Sound Effects
+      </label>
+    </div>
+  </div>
+  <div id="game-container" style="display: none;">
+    <div id="background"></div>
+    <div id="text-box" onclick="nextScene()"></div>
+  </div>
+
+  <audio id="music" loop>
+    <!-- Вставьте ссылку на музыку -->
+  </audio>
+  <audio id="voice">
+    <!-- Вставьте ссылку на озвучку -->
+  </audio>
+  <script src="./js/background.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="js/game.js"></script>
+  <script src="./js/music.js"></script>
 </body>
+
 </html>
