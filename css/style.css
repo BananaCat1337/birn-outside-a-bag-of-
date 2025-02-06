@@ -225,7 +225,7 @@ body {
 }
 
 #stars {
-  background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+  background: linear-gradient(to left, #333, #333 50%, #333 75%, #333 75%);
   width: 100%;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
@@ -234,7 +234,14 @@ body {
   transition: all 0.4s ease-in-out;
 }
 
-#stars:hover {
-  background: black;
-  animation: flicker 1.5s infinite alternate;
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
