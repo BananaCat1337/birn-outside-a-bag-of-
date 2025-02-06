@@ -32,13 +32,16 @@
   </div>
   <div id="game-container" style="display: none;">
     <div id="background"></div>
-    <div id="text-box" onclick="nextScene()"></div>
+    <div id="character-left" class="character"></div>
+    <div id="character-right" class="character"></div>
+    <div id="text-box">
+      <div id="character-name"></div>
+      <div id="dialogue-text"></div>
+    </div>
   </div>
 
-  <audio id="music" loop>
-  </audio>
-  <audio id="voice">
-  </audio>
+  <audio id="music" loop></audio>
+  <audio id="voice"></audio>
   <script src="./js/background.js"></script>
   <script src="./js/script.js"></script>
   <script src="js/game.js"></script>
