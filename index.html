@@ -12,11 +12,11 @@
   <canvas id="stars"></canvas>
   <div class="menu-container">
     <div class="typing">
-      <h1 class="text">НАЗВАНИЕ ИГРЫ НАХУЙ!!!</h1>
+      <h1 class="text">НАЗВАНИЕ ИГРЫ</h1>
     </div>
     <button class="bubbly-button" onclick="startGame()">Начать игру</button>
     <button class="bubbly-button" onclick="openSettings()">Настройки</button>
-    <button class="bubbly-button" onclick="exitGame()">Выйти к хуям</button>
+    <button class="bubbly-button" onclick="exitGame()">Выйти</button>
   </div>
   <div id="settings-modal" class="modal">
     <div class="modal-content">
@@ -32,6 +32,7 @@
   </div>
   <div id="game-container" style="display: none;">
     <div id="background"></div>
+    <div id="choice-container" class="choice-container"></div>
     <div id="character-left" class="character"></div>
     <div id="character-right" class="character"></div>
     <div id="text-box">
@@ -40,7 +41,7 @@
     </div>
   </div>
 
-  <audio id="music" loop></audio>
+  <audio loop id="music" src="./sound/sound.mp3"></audio>
   <audio id="voice"></audio>
   <script src="./js/background.js"></script>
   <script src="./js/script.js"></script>
