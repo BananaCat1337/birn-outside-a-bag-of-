@@ -590,32 +590,10 @@ let scenes = [
       sprite: "../image/png/brothers.png",
       position: "right",
     },
-  },
-  {
-    text: "Вадим всегда любил кошек и не мог оставить её в беде.",
-    bg: "url(../image/background/gasstation.jpg)",
-    voice: "../sound/sergey/14.mp3",
-    character: { name: "", sprite: "", position: "" },
-  },
-  {
-    text: "Эй, ребята, она вшивая. Я бы на вашем месте не трогал её.",
-    bg: "url(../image/background/gasstation.jpg)",
-    voice: "../sound/sivaev/20.mp3",
-    character: {
-      name: "Вадим",
-      sprite: "../image/png/Sivaev.png",
-      position: "left",
-    },
-  },
-  {
-    text: "А я говорил, не надо это кушать. Пойдём домой.",
-    bg: "url(../image/background/gasstation.jpg)",
-    voice: "../sound/brothers/4.mp3",
-    character: {
-      name: "Никита",
-      sprite: "../image/png/brothers.png",
-      position: "right",
-    },
+    choices: [
+      { text: "Попытаться спасти", next: "choiceA" },
+      { text: "Уйти", next: "choiceB" },
+    ],
   },
   {
     text: "Зайдя в заправку, он подошёл к полке с напитками.",
@@ -743,7 +721,51 @@ let scenes = [
   },
 ];
 
+let choicePaths = {
+  choiceA: [
+    {
+      text: "Вадим всегда любил кошек и не мог оставить её в беде.",
+      bg: "url(../image/background/gasstation.jpg)",
+      voice: "../sound/sergey/14.mp3",
+      character: { name: "", sprite: "", position: "" },
+    },
+    {
+      text: "Эй, ребята, она вшивая. Я бы на вашем месте не трогал её.",
+      bg: "url(../image/background/gasstation.jpg)",
+      voice: "../sound/sivaev/20.mp3",
+      character: {
+        name: "Вадим",
+        sprite: "../image/png/Sivaev.png",
+        position: "left",
+      },
+    },
+    {
+      text: "А я говорил, не надо это кушать. Пойдём домой.",
+      bg: "url(../image/background/gasstation.jpg)",
+      voice: "../sound/brothers/4.mp3",
+      character: {
+        name: "Никита",
+        sprite: "../image/png/brothers.png",
+        position: "right",
+      },
+    },
+  ],
+  choiceB: [
+    {
+      text: "Вадим побоялся стать ужином вместо кошки и прошёл мимо.",
+      bg: "url(../image/background/gasstation.jpg)",
+      voice: "../sound/sergey/22.mp3",
+      character: {
+        name: "",
+        sprite: "",
+        position: "",
+      },
+    },
+  ],
+};
+
 let currentScene = 0;
+let currentChoicePath = null;
 let musicPlaying = true;
 let voiceEnabled = true;
 
@@ -754,27 +776,17 @@ function startGame() {
 }
 
 function nextScene() {
-  if (currentScene >= scenes.length) {
-    alert("Игра завершена!");
-    return window.close();
+  let scene;
+  if (currentChoicePath) {
+    scene = choicePaths[currentChoicePath].shift();
+    if (!scene) {
+      currentChoicePath = null;
+      return nextScene();
+    }
+  } else {
+    if (currentScene >= scenes.length) return alert("Игра завершена!");
+    scene = scenes[currentScene++];
   }
-
-  let scene = scenes[currentScene];
-
-  document.getElementById("background").style.backgroundImage = scene.bg;
-
-  let textBox = document.getElementById("dialogue-text");
-  let characterName = document.getElementById("character-name");
-  textBox.style.opacity = 0;
-  characterName.style.opacity = 0;
-
-  setTimeout(() => {
-    textBox.innerText = scene.text;
-    characterName.innerText = scene.character.name;
-    textBox.style.opacity = 1;
-    characterName.style.opacity = 1;
-  }, 200);
-
   if (scene.character.position === "left") {
     document.getElementById(
       "character-left"
@@ -788,7 +800,31 @@ function nextScene() {
   }
 
   if (voiceEnabled) playVoice(scene.voice);
-  currentScene++;
+
+  document.getElementById("background").style.backgroundImage = scene.bg;
+  document.getElementById("dialogue-text").innerText = scene.text;
+  document.getElementById("character-name").innerText = scene.character.name;
+
+  if (scene.choices) showChoices(scene.choices);
+}
+
+function showChoices(choices) {
+  let choiceContainer = document.getElementById("choice-container");
+  choiceContainer.innerHTML = "";
+  choiceContainer.style.display = "flex";
+  choices.forEach((choice) => {
+    let button = document.createElement("button");
+    button.className = "choice-button";
+    button.innerText = choice.text;
+    button.onclick = () => selectChoice(choice.next);
+    choiceContainer.appendChild(button);
+  });
+}
+
+function selectChoice(choiceKey) {
+  currentChoicePath = choiceKey;
+  document.getElementById("choice-container").style.display = "none";
+  nextScene();
 }
 
 function playVoice(voiceFile) {
@@ -809,7 +845,11 @@ function exitGame() {
   window.close();
 }
 
-document.getElementById("text-box").addEventListener("click", nextScene);
+document.getElementById("text-box").addEventListener("click", () => {
+  let choiceContainer = document.getElementById("choice-container");
+  if (choiceContainer.style.display === "flex") return; // Блокируем клик, если есть выбор
+  nextScene();
+});
 
 const volumeControls = document.createElement("div");
 volumeControls.innerHTML = `
@@ -851,4 +891,3 @@ document
   .addEventListener("mouseleave", () => {
     volumeContainer.style.opacity = "0";
   });
-  
