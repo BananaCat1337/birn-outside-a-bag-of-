@@ -3,20 +3,58 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Визуальная новелла</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <canvas id="stars"></canvas>
+  <div id="particles-js"></div>
   <div class="menu-container">
-    <div class="typing">
-      <h1 class="text">НАЗВАНИЕ ИГРЫ</h1>
-    </div>
-    <button class="bubbly-button" onclick="startGame()">Начать игру</button>
-    <button class="bubbly-button" onclick="openSettings()">Настройки</button>
-    <button class="bubbly-button" onclick="exitGame()">Выйти</button>
+    <!-- <div class="typing"> -->
+      <div class="stage">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+      </div>
+      
+      <style>
+        * *, *::before, *::after { 
+          animation-play-state: running !important;
+        }
+      </style>
+      <script>window.setTimeout = null;</script>
+    <!-- </div> -->
+    
+    <a href="#"  onclick="startGame()" class="btn-flip" data-back="СЕЙЧАС" data-front="ИГРАТЬ"></a>
+    
+    <a href="#"  onclick="openSettings()" class="btn-flip" data-back="СЕЙЧАС" data-front="НАСТРОЙ"></a>
+
+    <a href="#"  onclick="exitGame()" class="btn-flip" data-back="НАВСЕГДА" data-front="Выйди"></a>
+
+
+
+
   </div>
   <div id="settings-modal" class="modal">
     <div class="modal-content">
@@ -43,10 +81,11 @@
 
   <audio loop id="music" src="./sound/sound.mp3"></audio>
   <audio id="voice"></audio>
-  <script src="./js/background.js"></script>
+  <script src="./js/wow_background.js"></script>
   <script src="./js/script.js"></script>
   <script src="js/game.js"></script>
   <script src="./js/music.js"></script>
+  <script src="./js/textbutton_effect.js"></script>
 </body>
 
 </html>
