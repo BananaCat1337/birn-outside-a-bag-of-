@@ -600,124 +600,10 @@ let scenes = [
     bg: "url(../image/background/shopjpg.jpg)",
     voice: "../sound/sergey/15.mp3",
     character: { name: "", sprite: "", position: "" },
-  },
-  {
-    text: "Подойдя к кассе, он увидел знакомое лицо.",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/sergey/16mp3.mp3",
-    character: { name: "", sprite: "", position: "" },
-  },
-  {
-    text: "Приветики-пистолетики, епта! Чё у вас, котики-наркотики?",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/cheremnih/1.mp3",
-    character: {
-      name: "Черемных",
-      sprite: "../image/png/cheremnih.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Привет, не ожидал тебя тут встретить. Что ты тут забыл?",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/sivaev/21.mp3",
-    character: {
-      name: "Вадим",
-      sprite: "../image/png/Sivaev.png",
-      position: "left",
-    },
-  },
-  {
-    text: "Да опять предложили темку, епта. Вот, в долгах.",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/cheremnih/2.mp3",
-    character: {
-      name: "Черемных",
-      sprite: "../image/png/cheremnih.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Чё, опять? Жизнь тебя ничему не учит.",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/sivaev/22.mp3",
-    character: {
-      name: "Вадим",
-      sprite: "../image/png/Sivaev.png",
-      position: "left",
-    },
-  },
-  {
-    text: "Да блин, жизнь такая. Сейчас даже уборщиков убирают. Кстати, за 'банку' переведи мне на карту.",
-    bg: "url(../image/background/shopjpg.jpg)",
-    voice: "../sound/cheremnih/3.mp3",
-    character: {
-      name: "Черемных",
-      sprite: "../image/png/cheremnih.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Открыв банку, Вадим увидел яркий луч света, который ослепил его.",
-    bg: "url(../image/background/white.jpg)",
-    voice: "../sound/sergey/17.mp3",
-    character: { name: "", sprite: "", position: "" },
-  },
-  {
-    text: "Придя в себя, он оказался в белой комнате в смирительной рубашке.",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/sergey/18.mp3",
-    character: { name: "", sprite: "", position: "" },
-  },
-  {
-    text: "Как его состояние?",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/bogdan/14mp3.mp3",
-    character: {
-      name: "Олег",
-      sprite: "../image/png/tgbizness.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Судя по анализам, скоро он придёт в норму.",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/bogdan/18.mp3",
-    character: {
-      name: "Богдан",
-      sprite: "../image/png/bogdanDoctor.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Это потрясающе! Слава Питону!",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/bogdan/19.mp3",
-    character: {
-      name: "Олег",
-      sprite: "../image/png/tgbizness.png",
-      position: "right",
-    },
-  },
-  {
-    text: "А он ничего не говорил, пока был здесь?",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/bogdan/20.mp3",
-    character: {
-      name: "Олег",
-      sprite: "../image/png/tgbizness.png",
-      position: "right",
-    },
-  },
-  {
-    text: "Бредил, будто находился в визуальной новелле.",
-    bg: "url(../image/background/hostes.jpg)",
-    voice: "../sound/bogdan/21.mp3",
-    character: {
-      name: "Богдан",
-      sprite: "../image/png/bogdanDoctor.png",
-      position: "right",
-    },
+    choices: [
+      { text: "Бёрн", next: "choiceС" },
+      { text: "Брепси", next: "choiceD" },
+    ],
   },
 ];
 
@@ -761,6 +647,216 @@ let choicePaths = {
         position: "",
       },
     },
+  ],
+  choiceС: [
+    {
+      text: "Подойдя к кассе, он увидел знакомое лицо.",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/sergey/16mp3.mp3",
+      character: { name: "", sprite: "", position: "" },
+    },
+    {
+      text: "Приветики-пистолетики, епта! Чё у вас, котики-наркотики?",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/cheremnih/1.mp3",
+      character: {
+        name: "Черемных",
+        sprite: "../image/png/cheremnih.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Привет, не ожидал тебя тут встретить. Что ты тут забыл?",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/sivaev/21.mp3",
+      character: {
+        name: "Вадим",
+        sprite: "../image/png/Sivaev.png",
+        position: "left",
+      },
+    },
+    {
+      text: "Да опять предложили темку, епта. Вот, в долгах.",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/cheremnih/2.mp3",
+      character: {
+        name: "Черемных",
+        sprite: "../image/png/cheremnih.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Чё, опять? Жизнь тебя ничему не учит.",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/sivaev/22.mp3",
+      character: {
+        name: "Вадим",
+        sprite: "../image/png/Sivaev.png",
+        position: "left",
+      },
+    },
+    {
+      text: "Да блин, жизнь такая. Сейчас даже уборщиков убирают. Кстати, за 'банку' переведи мне на карту.",
+      bg: "url(../image/background/shopjpg.jpg)",
+      voice: "../sound/cheremnih/3.mp3",
+      character: {
+        name: "Черемных",
+        sprite: "../image/png/cheremnih.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Открыв банку, Вадим увидел яркий луч света, который ослепил его.",
+      bg: "url(../image/background/white.jpg)",
+      voice: "../sound/sergey/17.mp3",
+      character: { name: "", sprite: "", position: "" },
+    },
+    {
+      text: "Придя в себя, он оказался в белой комнате в смирительной рубашке.",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/sergey/18.mp3",
+      character: { name: "", sprite: "", position: "" },
+    },
+    {
+      text: "Как его состояние?",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/bogdan/14mp3.mp3",
+      character: {
+        name: "Олег",
+        sprite: "../image/png/tgbizness.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Судя по анализам, скоро он придёт в норму.",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/bogdan/18.mp3",
+      character: {
+        name: "Богдан",
+        sprite: "../image/png/bogdanDoctor.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Это потрясающе! Слава Питону!",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/bogdan/19.mp3",
+      character: {
+        name: "Олег",
+        sprite: "../image/png/tgbizness.png",
+        position: "right",
+      },
+    },
+    {
+      text: "А он ничего не говорил, пока был здесь?",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/bogdan/20.mp3",
+      character: {
+        name: "Олег",
+        sprite: "../image/png/tgbizness.png",
+        position: "right",
+      },
+    },
+    {
+      text: "Бредил, будто находился в визуальной новелле.",
+      bg: "url(../image/background/hostes.jpg)",
+      voice: "../sound/bogdan/21.mp3",
+      character: {
+        name: "Богдан",
+        sprite: "../image/png/bogdanDoctor.png",
+        position: "right",
+      },
+    },
+  ],
+    choiceD: [
+      {
+        text: "Подойдя к кассе, он увидел знакомое лицо.",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/sergey/16mp3.mp3",
+        character: { name: "", sprite: "", position: "" },
+      },
+      {
+        text: "Приветики-пистолетики, епта! Чё у вас, котики-наркотики?",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/cheremnih/1.mp3",
+        character: {
+          name: "Черемных",
+          sprite: "../image/png/cheremnih.png",
+          position: "right",
+        },
+      },
+      {
+        text: "Привет, не ожидал тебя тут встретить. Что ты тут забыл?",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/sivaev/21.mp3",
+        character: {
+          name: "Вадим",
+          sprite: "../image/png/Sivaev.png",
+          position: "left",
+        },
+      },
+      {
+        text: "Да опять предложили темку, епта. Вот, в долгах.",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/cheremnih/2.mp3",
+        character: {
+          name: "Черемных",
+          sprite: "../image/png/cheremnih.png",
+          position: "right",
+        },
+      },
+      {
+        text: "Чё, опять? Жизнь тебя ничему не учит.",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/sivaev/22.mp3",
+        character: {
+          name: "Вадим",
+          sprite: "../image/png/Sivaev.png",
+          position: "left",
+        },
+      },
+      {
+        text: "Да блин, жизнь такая. Сейчас даже уборщиков убирают. Кстати, за 'банку' переведи мне на карту.",
+        bg: "url(../image/background/shopjpg.jpg)",
+        voice: "../sound/cheremnih/3.mp3",
+        character: {
+          name: "Черемных",
+          sprite: "../image/png/cheremnih.png",
+          position: "right",
+        },
+      },
+      {
+        text: "Открыв банку, Вадим увидел яркий луч света, который ослепил его.",
+        bg: "url(../image/background/white.jpg)",
+        voice: "../sound/sergey/17.mp3",
+        character: { name: "", sprite: "", position: "" },
+      },
+      {
+        text: "Придя в себя, он оказался в баре 'Тихий Ден'.",
+        bg: "url(../image/background/bar.jpg)",
+        voice: "../sound/sergey/30.mp3",
+        character: { name: "", sprite: "", position: "" },
+      },
+      {
+        text: "Перед ним возник силуэт статного мужчины лет сорока. Попивая Bepsi, он сказал",
+        bg: "url(../image/background/bar.jpg)",
+        voice: "../sound/sergey/31.mp3",
+        character: {
+          name: "",
+          sprite: "",
+          position: "",
+        },
+      },
+      {
+        text: "Сейчас такое время и уборщиков убирают.",
+        bg: "url(../image/background/bar.jpg)",
+        voice: "../sound/Den/1.mp3",
+        character: {
+          name: "Дэн",
+          sprite: "../image/png/Дэн.png",
+          position: "right",
+        },
+      }
   ],
 };
 
@@ -847,7 +943,7 @@ function exitGame() {
 
 document.getElementById("text-box").addEventListener("click", () => {
   let choiceContainer = document.getElementById("choice-container");
-  if (choiceContainer.style.display === "flex") return; // Блокируем клик, если есть выбор
+  if (choiceContainer.style.display === "flex") return;
   nextScene();
 });
 
