@@ -652,7 +652,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   /* Animate Background Image */
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: #ffffff transparent;
   -webkit-animation: aitf 80s linear infinite;
   /* Activate hardware acceleration for smoother animations */
   -webkit-transform: translate3d(0, 0, 0);

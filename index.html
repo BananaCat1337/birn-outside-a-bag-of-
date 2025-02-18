@@ -95,7 +95,8 @@
 
     <audio loop id="music" src="./sound/sound.mp3"></audio>
     <audio id="voice"></audio>
-    <script type="module">import * as THREE from 'https://cdn.skypack.dev/three@0.136.0/build/three.module.js';
+    <script type="module">
+      import * as THREE from 'https://cdn.skypack.dev/three@0.136.0/build/three.module.js';
       import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
       import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/UnrealBloomPass.js';
       import { EffectComposer } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/postprocessing/EffectComposer.js';
@@ -332,7 +333,7 @@
       composer.addPass(bloomPass);
       composer.addPass(scanLinePass);
 
-      const pointLight = new THREE.PointLigh<script src="./js/wow_background.js"></script>t(0xffffff, 1, 100);
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
       scene.add(pointLight);
 
       const ambientLight = new THREE.AmbientLight(0xb347ec); 
@@ -466,11 +467,11 @@
       document.addEventListener('DOMContentLoaded', () => {
         const title1 = document.createElement('h3');
         title1.classList.add('title', '_1');
-        title1.textContent = 'three.js + Ambient Light Color Change on Double Click';
+        title1.textContent = '';
 
         const title2 = document.createElement('h3');
         title2.classList.add('title', '_2');
-        title2.textContent = 'double click';
+        title2.textContent = '';
 
         title3 = document.createElement('h3');
         title3.classList.add('title', '_3');
