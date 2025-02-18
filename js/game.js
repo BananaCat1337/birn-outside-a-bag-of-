@@ -936,11 +936,6 @@ function openSettings() {
 function closeSettings() {
   document.getElementById("settings-modal").style.display = "none";
 }
-
-function exitGame() {
-  window.close();
-}
-
 document.getElementById("text-box").addEventListener("click", () => {
   let choiceContainer = document.getElementById("choice-container");
   if (choiceContainer.style.display === "flex") return;
