@@ -72,16 +72,22 @@
         data-front="Выйди"
       ></a>
     </div>
+
+    
     <div id="settings-modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeSettings()">&times;</span>
-        <h2>НАСТРОЙКИ</h2>
-        <label> <input type="checkbox" id="music-toggle" /> Music </label>
-        <label>
+        <h2 class="anus_text">НАСТРОЙКИ</h2>
+        <label class="music_checkbox"> <input type="checkbox" id="music-toggle" /> Music </label>
+        <label class="sound_checkbox">
           <input type="checkbox" id="sound-toggle" /> Sound Effects
         </label>
+
+
       </div>
     </div>
+
+    
     <div id="game-container" style="display: none">
       <div id="background"></div>
       <div id="choice-container" class="choice-container"></div>
@@ -93,8 +99,14 @@
       </div>
     </div>
 
+
+
+    <div class='cursor' id="cursor"></div>
+	  <div class='cursor2' id="cursor2"></div>
+	  <div class='cursor3' id="cursor3"></div>
     <audio loop id="music" src="./sound/sound.mp3"></audio>
     <audio id="voice"></audio>
+    <script src="./js/cursor.js"></script>
     <script type="module">
       import * as THREE from 'https://cdn.skypack.dev/three@0.136.0/build/three.module.js';
       import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
