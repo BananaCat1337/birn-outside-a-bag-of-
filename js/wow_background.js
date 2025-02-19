@@ -10,7 +10,7 @@ $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles
             }
           },
           "color": {
-            "value": "#b1c900"
+            "value": "#ff0000"
           },
           "shape": {
             "type": "circle",

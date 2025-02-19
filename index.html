@@ -56,16 +56,30 @@
 
 
   </div>
-  <div id="settings-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeSettings()">&times;</span>
-      <h2>НАСТРОЙКИ</h2>
-      <label>
-        <input type="checkbox" id="music-toggle"> Music
-      </label>
+  <section>
+    
+    <div id="settings-modal" class="modal">
+      <div class="box">
+        <span></span>
+      <span></span>
+      <span></span>
+        <div class="modal-content">
+        <span></span>
+          
+          <span class="close" onclick="closeSettings()">&times;</span>
+          <h2 style="position: relative; top: -125px;">НАСТРОЙКИ</h2>
+          <div class="container-button"
+          <input data-index="0" type="checkbox" id="music-toggle"> Music
+          <label for="music-toggle" style="position: fixed;top: 207px;left: 128px;">
+          </label>
+        </div>
+      </div>
     </div>
   </div>
-  <div id="game-container" style="display: none;">
+    
+  </section>
+
+    <div id="game-container" style="display: none;">
     <div id="background"></div>
     <div id="choice-container" class="choice-container"></div>
     <div id="character-left" class="character"></div>
@@ -78,6 +92,7 @@
 
   <audio loop id="music" src="./sound/sound.mp3"></audio>
   <audio id="voice"></audio>
+  <script src="./js/button.js"></script>
   <script src="./js/wow_background.js"></script>
   <script src="./js/script.js"></script>
   <script src="js/game.js"></script>
