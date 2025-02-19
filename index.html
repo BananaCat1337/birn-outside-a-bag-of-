@@ -48,7 +48,7 @@
     
     <a href="#"  onclick="startGame()" class="btn-flip" data-back="СЕЙЧАС" data-front="ИГРАТЬ"></a>
     
-    <a href="#"  onclick="openSettings()" class="btn-flip" data-back="СЕЙЧАС" data-front="НАСТРОЙ"></a>
+    <a href="#" onclick="openSettings()" class="btn-flip" data-back="СЕЙЧАС" data-front="НАСТРОЙ"></a>
 
     <a href="#"  onclick="exitGame()" class="btn-flip" data-back="НАВСЕГДА" data-front="Выйди"></a>
 
@@ -58,24 +58,23 @@
   </div>
   <section>
     
-    <div id="settings-modal" class="modal">
+    <div id="settings-modal" class="modal" onclick="closeSettings()"> 
       <div class="box">
-        <span></span>
-      <span></span>
-      <span></span>
-        <div class="modal-content">
-        <span></span>
-          
+        <span></span><span></span><span></span>
+        <div class="modal-content" onclick="event.stopPropagation();"> 
           <span class="close" onclick="closeSettings()">&times;</span>
           <h2 style="position: relative; top: -125px;">НАСТРОЙКИ</h2>
-          <div class="container-button"
-          <input data-index="0" type="checkbox" id="music-toggle"> Music
-          <label for="music-toggle" style="position: fixed;top: 207px;left: 128px;">
-          </label>
+          
+          <div class="container-button">
+            <label for="music-toggle">
+              <input data-index="0" type="checkbox" id="music-toggle"> Музыка
+            </label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    
+    <audio loop id="music" src="./sound/sound.mp3"></audio>
     
   </section>
 
@@ -90,8 +89,6 @@
     </div>
   </div>
 
-  <audio loop id="music" src="./sound/sound.mp3"></audio>
-  <audio id="voice"></audio>
   <script src="./js/button.js"></script>
   <script src="./js/wow_background.js"></script>
   <script src="./js/script.js"></script>
