@@ -1,6 +1,6 @@
 
 document.getElementById('music-toggle').addEventListener('change', function() {
-    let music = document.getElementById('music');
+    let music = document.querySelector('#elevator_music');
     if (this.checked) {
       music.play();
     } else {

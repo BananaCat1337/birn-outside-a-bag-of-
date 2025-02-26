@@ -1,54 +1,74 @@
-
-
-let currentScene = 0;
+// let currentScene = 0;
 let currentChoicePath = null;
 let musicPlaying = true;
 let voiceEnabled = true;
+let currentBranch = scenes;
+let currentScene = scenes[0];
+let currentSceneIndex = 0;
 
 function startGame() {
   document.querySelector(".menu-container").style.display = "none";
-  document.getElementById("game-container").style.display = "block";
+  document.querySelector("#game-container").style.display = "block";
   nextScene();
 }
 
+// function nextScene() {
+//   let scene;
+//   if (currentChoicePath) {
+//     scene = choicePaths[currentChoicePath].shift();
+//     if (!scene) {
+//       currentChoicePath = null;
+//       return nextScene();
+//     }
+//   } else {
+//     if (currentScene >= scenes.length) return alert("Игра завершена!");
+//     scene = scenes[currentScene++];
+//   }
+//   if (scene.character.position === "left") {
+//     document.querySelector("#character-left").style.backgroundImage = `url(${scene.character.sprite})`;
+//     document.querySelector("#character-right").style.backgroundImage = "";
+//   } else {
+//     document.querySelector("#character-right").style.backgroundImage = `url(${scene.character.sprite})`;
+//     document.querySelector("#character-left").style.backgroundImage = "";
+//   }
+
+//   if (voiceEnabled) playVoice(scene.voice);
+
+//   document.querySelector("#background").style.backgroundImage = scene.bg;
+//   document.querySelector("#dialogue-text").innerText = scene.text;
+//   document.querySelector("#character-name").innerText = scene.character.name;
+
+//   if (scene.choices) showChoices(scene.choices);
+// }
+
 function nextScene() {
-  let scene;
-  if (currentChoicePath) {
-    scene = choicePaths[currentChoicePath].shift();
-    if (!scene) {
-      currentChoicePath = null;
-      return nextScene();
-    }
-  } else {
-    if (currentScene >= scenes.length) return alert("Игра завершена!");
-    scene = scenes[currentScene++];
-  }
+  currentSceneIndex +=1
+
   if (scene.character.position === "left") {
-    document.getElementById(
-      "character-left"
-    ).style.backgroundImage = `url(${scene.character.sprite})`;
-    document.getElementById("character-right").style.backgroundImage = "";
+    document.querySelector("#character-left").style.backgroundImage = `url(${scene.character.sprite})`;
+    document.querySelector("#character-right").style.backgroundImage = "";
   } else {
-    document.getElementById(
-      "character-right"
-    ).style.backgroundImage = `url(${scene.character.sprite})`;
-    document.getElementById("character-left").style.backgroundImage = "";
+    document.querySelector("#character-right").style.backgroundImage = `url(${scene.character.sprite})`;
+    document.querySelector("#character-left").style.backgroundImage = "";
   }
 
-  if (voiceEnabled) playVoice(scene.voice);
+  if (voiceEnabled) playVoice(currentScene.voice);
 
-  document.getElementById("background").style.backgroundImage = scene.bg;
-  document.getElementById("dialogue-text").innerText = scene.text;
-  document.getElementById("character-name").innerText = scene.character.name;
+  document.querySelector("#background").style.backgroundImage = currentScene.bg;
+  document.querySelector("#dialogue-text").innerText = currentScene.text;
+  document.querySelector("#character-name").innerText = currentScene.character.name;
 
-  if (scene.choices) showChoices(scene.choices);
+  if (scene.choices) showChoices(currentChoicePath.choices);
 }
 
 function showChoices(choices) {
-  let choiceContainer = document.getElementById("choice-container");
+  let choiceContainer = document.querySelector("#choice-container");
   choiceContainer.innerHTML = "";
   choiceContainer.style.display = "flex";
   choices.forEach((choice) => {
+    //не создавать кнопку каждый раз
+    // сделать их один раз и сетать value
+
     let button = document.createElement("button");
     button.className = "choice-button";
     button.innerText = choice.text;
@@ -59,25 +79,25 @@ function showChoices(choices) {
 
 function selectChoice(choiceKey) {
   currentChoicePath = choiceKey;
-  document.getElementById("choice-container").style.display = "none";
+  document.querySelector("#choice-container").style.display = "none"; //тогда уж хотябы удалять элемент
   nextScene();
 }
 
 function playVoice(voiceFile) {
-  let voice = document.getElementById("voice");
+  let voice = document.querySelector("#voice");
   voice.src = voiceFile;
   voice.play();
 }
 
 function openSettings() {
-  document.getElementById("settings-modal").style.display = "block";
+  document.querySelector("#settings-modal").style.display = "block";
 }
 
 function closeSettings() {
-  document.getElementById("settings-modal").style.display = "none";
+  document.querySelector("#settings-modal").style.display = "none";
 }
-document.getElementById("text-box").addEventListener("click", () => {
-  let choiceContainer = document.getElementById("choice-container");
+document.querySelector("#text-box").addEventListener("click", () => {
+  let choiceContainer = document.querySelector("#choice-container");
   if (choiceContainer.style.display === "flex") return;
   nextScene();
 });
@@ -93,12 +113,12 @@ volumeControls.innerHTML = `
 `;
 document.body.appendChild(volumeControls);
 
-document.getElementById("music-volume").addEventListener("input", (event) => {
-  document.getElementById("music").volume = event.target.value;
+document.querySelector("#music-volume").addEventListener("input", (event) => {
+  document.querySelector("#music").volume = event.target.value;
 });
 
-document.getElementById("voice-volume").addEventListener("input", (event) => {
-  document.getElementById("voice").volume = event.target.value;
+document.querySelector("#voice-volume").addEventListener("input", (event) => {
+  document.querySelector("#voice").volume = event.target.value;
 });
 
 const volumeContainer = document.querySelector(".volume-container");
