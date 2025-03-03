@@ -23,7 +23,7 @@ function addChoice(choices, id = null) {
 }
 
 
-function nextScene(nextSceneId = null) {
+function nextScene(nextSceneId = null, nextChoiceId = null) {
   // инициализация первой сцены
   if (!timeLine.at(-1)) {
     timeLine.push(findEntityById(plot.scenes, 0, "scenes"))
@@ -31,7 +31,9 @@ function nextScene(nextSceneId = null) {
   }
   const lastSceneId = timeLine.filter((item) => item.type === "scene").at(-1).id;
   const sceneToAddId = nextSceneId ??  lastSceneId + 1;
-  const SceneToAdd = findEntityById(plot, sceneToAddId, "scene")
+  const sceneToAdd = findEntityById(plot, sceneToAddId, "scene");
+  timeLine.push(sceneToAdd);
+  addChoice(plot.choices, nextChoiceId);
 }
 
 // function nextScene() {
