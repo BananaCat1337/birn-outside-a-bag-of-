@@ -1,7 +1,9 @@
-const scenes = {
+const plot = {
   scenes: [
     {
-      id: 1,
+      type: "scene",
+      id: 0,
+      defaultChoiceId: 0,
       content: [
         {
           text: "Brepsi entertainment представляет",
@@ -598,7 +600,9 @@ const scenes = {
       ],
     },
     {
-      id: 2,
+      type: "scene",
+      id: 1,
+      defaultChoiceId: 1,
       content: [
         {
           text: "Вадим всегда любил кошек и не мог оставить её в беде.",
@@ -635,7 +639,9 @@ const scenes = {
       ],
     },
     {
-      id: 3,
+      type: "scene",
+      id: 2,
+      defaultChoiceId: 1,
       content: [
         {
           text: "Вадим побоялся стать ужином вместо кошки и прошёл мимо.",
@@ -656,7 +662,9 @@ const scenes = {
       ],
     },
     {
-      id: 4,
+      type: "scene",
+      id: 3,
+      defaultChoiceId: null,
       content: [
         {
           text: "Подойдя к кассе, он увидел знакомое лицо.",
@@ -779,7 +787,9 @@ const scenes = {
       ],
     },
     {
-      id: 5,
+      type: "scene",
+      id: 4,
+      defaultChoiceId: null,
       content: [
         {
           text: "Подойдя к кассе, он увидел знакомое лицо.",
@@ -875,19 +885,20 @@ const scenes = {
 
   choices: [
     {
-      id: 1, content: [
+      type: "choice",
+      id: 0,
+      content: [
         { text: "Попытаться спасти", next: "choiceA" },
         { text: "Уйти", next: "choiceB" },
       ],
     },
     {
-      /**
-       *     id2: [
-      { text: "Бёрн", next: "choiceС" },
-      { text: "Брепси", next: "choiceD" },
-    ],
-       */
-    }
+      type: "choice",
+      id: 1,
+      content: [
+        { text: "Бёрн", next: "choiceС" },
+        { text: "Брепси", next: "choiceD" },
+      ],
+    },
   ],
-
 };

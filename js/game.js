@@ -4,6 +4,7 @@ let currentScene = 0;
 let currentChoicePath = null;
 let musicPlaying = true;
 let voiceEnabled = true;
+const timeLine = [];
 
 function startGame() {
   document.querySelector(".menu-container").style.display = "none";
@@ -11,38 +12,60 @@ function startGame() {
   nextScene();
 }
 
-function nextScene() {
-  let scene;
-  if (currentChoicePath) {
-    scene = choicePaths[currentChoicePath].shift();
-    if (!scene) {
-      currentChoicePath = null;
-      return nextScene();
-    }
-  } else {
-    if (currentScene >= scenes.length) return alert("Игра завершена!");
-    scene = scenes[currentScene++];
-  }
-  if (scene.character.position === "left") {
-    document.getElementById(
-      "character-left"
-    ).style.backgroundImage = `url(${scene.character.sprite})`;
-    document.getElementById("character-right").style.backgroundImage = "";
-  } else {
-    document.getElementById(
-      "character-right"
-    ).style.backgroundImage = `url(${scene.character.sprite})`;
-    document.getElementById("character-left").style.backgroundImage = "";
-  }
-
-  if (voiceEnabled) playVoice(scene.voice);
-
-  document.getElementById("background").style.backgroundImage = scene.bg;
-  document.getElementById("dialogue-text").innerText = scene.text;
-  document.getElementById("character-name").innerText = scene.character.name;
-
-  if (scene.choices) showChoices(scene.choices);
+function findEntityById(collection, id, property) {
+  return collection.filter((item) => item[property].id === id)[0];
 }
+
+function addChoice(choices, id = null) {
+  const defaultChoiceId = timeLine.at(-1).defaultChoiceId;
+  const choiceToAdd = id ?? defaultChoiceId
+  timeLine.push(findEntityById(choices, choiceToAdd, "choices"))
+}
+
+
+function nextScene(nextSceneId = null) {
+  // инициализация первой сцены
+  if (!timeLine.at(-1)) {
+    timeLine.push(findEntityById(plot.scenes, 0, "scenes"))
+    addChoice(plot.choices)
+  }
+  const lastSceneId = timeLine.filter((item) => item.type === "scene").at(-1).id;
+  const sceneToAddId = nextSceneId ??  lastSceneId + 1;
+  const SceneToAdd = findEntityById(plot, sceneToAddId, "scene")
+}
+
+// function nextScene() {
+//   let scene;
+//   if (currentChoicePath) {
+//     scene = choicePaths[currentChoicePath].shift();
+//     if (!scene) {
+//       currentChoicePath = null;
+//       return nextScene();
+//     }
+//   } else {
+//     if (currentScene >= scenes.length) return alert("Игра завершена!");
+//     scene = scenes[currentScene++];
+//   }
+//   if (scene.character.position === "left") {
+//     document.getElementById(
+//       "character-left"
+//     ).style.backgroundImage = `url(${scene.character.sprite})`;
+//     document.getElementById("character-right").style.backgroundImage = "";
+//   } else {
+//     document.getElementById(
+//       "character-right"
+//     ).style.backgroundImage = `url(${scene.character.sprite})`;
+//     document.getElementById("character-left").style.backgroundImage = "";
+//   }
+
+//   if (voiceEnabled) playVoice(scene.voice);
+
+//   document.getElementById("background").style.backgroundImage = scene.bg;
+//   document.getElementById("dialogue-text").innerText = scene.text;
+//   document.getElementById("character-name").innerText = scene.character.name;
+
+//   if (scene.choices) showChoices(scene.choices);
+// }
 
 function showChoices(choices) {
   let choiceContainer = document.getElementById("choice-container");
