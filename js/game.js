@@ -1,6 +1,7 @@
-
-
-let currentScene = 0;
+//TODO работать не с айди из стори жс а с индексами из таймлайн
+// это другое!!!!! вы нипонимаите!!
+let currentSceneIndex = 0;
+// let currentScene = 0;
 let currentChoicePath = null;
 let musicPlaying = true;
 let voiceEnabled = true;
@@ -8,34 +9,77 @@ const timeLine = [];
 
 function startGame() {
   document.querySelector(".menu-container").style.display = "none";
-  document.getElementById("game-container").style.display = "block";
-  nextScene();
+  document.querySelector("#game-container").style.display = "block";
+  addNextScene();
 }
-
-function findEntityById(collection, id, property) {
-  return collection.filter((item) => item[property].id === id)[0];
+//TODO учесть в обработках что у нас теперь все в чсценах а не в разных ключах
+function findEntityById(collection, id) {
+  return collection.filter((item) => item.id === id)[0]; 
 }
 
 function addChoice(choices, id = null) {
   const defaultChoiceId = timeLine.at(-1).defaultChoiceId;
-  const choiceToAdd = id ?? defaultChoiceId
-  timeLine.push(findEntityById(choices, choiceToAdd, "choices"))
+  const choiceToAdd = id ?? defaultChoiceId;
+  timeLine.push(findEntityById(choices, choiceToAdd, "choices"));
 }
 
-
-function nextScene(nextSceneId = null, nextChoiceId = null) {
+function addNextScene(nextSceneId = null, nextChoiceId = null) {
   // инициализация первой сцены
   if (!timeLine.at(-1)) {
-    timeLine.push(findEntityById(plot.scenes, 0, "scenes"))
-    addChoice(plot.choices)
+    timeLine.push(findEntityById(plot.scenes, 0, "scenes"));
+    addChoice(plot.choices);
   }
   const lastSceneId = timeLine.filter((item) => item.type === "scene").at(-1).id;
-  const sceneToAddId = nextSceneId ??  lastSceneId + 1;
+  const sceneToAddId = nextSceneId ?? lastSceneId + 1;
   const sceneToAdd = findEntityById(plot, sceneToAddId, "scene");
   timeLine.push(sceneToAdd);
   addChoice(plot.choices, nextChoiceId);
 }
 
+
+function switchToNextScene(nextId = null) {
+  const currentScene = getCurrentScene();
+  const nextSceneId = timeLine.indexOf(currentScene) + 1;
+  currentSceneIndex = nextSceneId;
+}
+
+function switchToPrevScene() {
+  const currentScene = getCurrentScene();
+  const prevSceneIndex = timeLine.indexOf(currentScene) - 1;
+  currentSceneIndex = prevSceneIndex;
+}
+
+//TODO сцена выбора может быть текущей сценой
+function getCurrentScene() {
+  const currentScene = findEntityById(plot, currentSceneIndex, "scene");
+  return currentScene;
+}
+//TODO проверка на то что мы уже выбрали и второй раз это делать нинада!!!! не положено!
+//TODO рендерить сцены выбора как сцены
+function renderScene() {
+  //clear previous characters
+  document.querySelector("#character-right").style.backgroundImage = "";
+  document.querySelector("#character-left").style.backgroundImage = "";
+
+  const currentScene = getCurrentScene();
+  currentScene.characters.forEach((character) => {
+    const characterPosition = character.position;
+    document.querySelector(`#character-${characterPosition}`).style.backgroundImage = `url(${currentScene.character.sprite})`;;
+  });
+  if (voiceEnabled) playVoice(scene.voice);
+
+  document.querySelector("#background").style.backgroundImage = scene.bg;
+  document.querySelector("#dialogue-text").innerText = scene.text;
+  document.querySelector("#character-name").innerText = scene.character.name;
+  //TODO showChoices
+  if (scene.choices) showChoices(scene.choices);
+}
+
+function playVoice(voiceFile) {
+  let voice = document.querySelector("#voice");
+  voice.src = voiceFile;
+  voice.play();
+}
 // function nextScene() {
 //   let scene;
 //   if (currentChoicePath) {
@@ -49,28 +93,28 @@ function nextScene(nextSceneId = null, nextChoiceId = null) {
 //     scene = scenes[currentScene++];
 //   }
 //   if (scene.character.position === "left") {
-//     document.getElementById(
-//       "character-left"
+//     document.querySelector(
+//       "#character-left"
 //     ).style.backgroundImage = `url(${scene.character.sprite})`;
-//     document.getElementById("character-right").style.backgroundImage = "";
+//     document.querySelector("#character-right").style.backgroundImage = "";
 //   } else {
-//     document.getElementById(
-//       "character-right"
+//     document.querySelector(
+//       "#character-right"
 //     ).style.backgroundImage = `url(${scene.character.sprite})`;
-//     document.getElementById("character-left").style.backgroundImage = "";
+//     document.querySelector("#character-left").style.backgroundImage = "";
 //   }
 
 //   if (voiceEnabled) playVoice(scene.voice);
 
-//   document.getElementById("background").style.backgroundImage = scene.bg;
-//   document.getElementById("dialogue-text").innerText = scene.text;
-//   document.getElementById("character-name").innerText = scene.character.name;
+//   document.querySelector("#background").style.backgroundImage = scene.bg;
+//   document.querySelector("#dialogue-text").innerText = scene.text;
+//   document.querySelector("#character-name").innerText = scene.character.name;
 
 //   if (scene.choices) showChoices(scene.choices);
 // }
 
 function showChoices(choices) {
-  let choiceContainer = document.getElementById("choice-container");
+  let choiceContainer = document.querySelector("#choice-container");
   choiceContainer.innerHTML = "";
   choiceContainer.style.display = "flex";
   choices.forEach((choice) => {
@@ -84,25 +128,21 @@ function showChoices(choices) {
 
 function selectChoice(choiceKey) {
   currentChoicePath = choiceKey;
-  document.getElementById("choice-container").style.display = "none";
+  document.querySelector("#choice-container").style.display = "none";
   nextScene();
 }
 
-function playVoice(voiceFile) {
-  let voice = document.getElementById("voice");
-  voice.src = voiceFile;
-  voice.play();
-}
+
 
 function openSettings() {
-  document.getElementById("settings-modal").style.display = "block";
+  document.querySelector("#settings-modal").style.display = "block";
 }
 
 function closeSettings() {
-  document.getElementById("settings-modal").style.display = "none";
+  document.querySelector("#settings-modal").style.display = "none";
 }
-document.getElementById("text-box").addEventListener("click", () => {
-  let choiceContainer = document.getElementById("choice-container");
+document.querySelector("#text-box").addEventListener("click", () => {
+  let choiceContainer = document.querySelector("#choice-container");
   if (choiceContainer.style.display === "flex") return;
   nextScene();
 });
@@ -118,12 +158,12 @@ volumeControls.innerHTML = `
 `;
 document.body.appendChild(volumeControls);
 
-document.getElementById("music-volume").addEventListener("input", (event) => {
-  document.getElementById("music").volume = event.target.value;
+document.querySelector("#music-volume").addEventListener("input", (event) => {
+  document.querySelector("#music").volume = event.target.value;
 });
 
-document.getElementById("voice-volume").addEventListener("input", (event) => {
-  document.getElementById("voice").volume = event.target.value;
+document.querySelector("#voice-volume").addEventListener("input", (event) => {
+  document.querySelector("#voice").volume = event.target.value;
 });
 
 const volumeContainer = document.querySelector(".volume-container");
