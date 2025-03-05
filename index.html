@@ -1,108 +1,100 @@
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Визуальная новелла</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+        <title>Визуальная новелла</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
 
-<body>
-  <div id="particles-js"></div>
-  <div class="menu-container">
-    <!-- <div class="typing"> -->
-      <div class="stage">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-      </div>
-      
-      <style>
-        * *, *::before, *::after { 
-          animation-play-state: running !important;
-        }
-      </style>
-      <script>window.setTimeout = null;</script>
-    <!-- </div> -->
-    
-    <a href="#"  onclick="startGame()" class="btn-flip" data-back="СЕЙЧАС" data-front="ИГРАТЬ"></a>
-    
-    <a href="#" onclick="openSettings()" class="btn-flip" data-back="СЕЙЧАС" data-front="НАСТРОЙ"></a>
-
-    <a href="#"  onclick="exitGame()" class="btn-flip" data-back="НАВСЕГДА" data-front="Выйди"></a>
-
-
-
-
-  </div>
-  <section>
-    
-    <div id="settings-modal" class="modal" onclick="closeSettings()"> 
-      <div class="box">
-        <span></span><span></span><span></span>
-        <div class="modal-content" onclick="event.stopPropagation();"> 
-          <span class="close" onclick="closeSettings()">&times;</span>
-          <h2 class="text_glitch" style="position: relative; top: -100px;">НАСТРОЙКИ</h2>
-          
-          
-          <div class="container-button">
-              <form>
-              <label class="toggle" >
-                <input class="toggle__lever" type="checkbox" name="toggle" role="switch" value="on" id="music-toggle"> 
-                <figure>
-                  <h3 class="music-text">Музыка</h3>
-                </figure>
-              </label>
-            </form>
+    <body>
+        <div id="particles-js"></div>
+        <div class="menu-container">
+            <!-- <div class="typing"> -->
+            <div class="stage">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
             </div>
-          </div>
+
+            <style>
+                * *,
+                *::before,
+                *::after {
+                    animation-play-state: running !important;
+                }
+            </style>
+            <!-- </div> -->
+
+            <a href="#" onclick="startGame()" class="btn-flip" data-back="СЕЙЧАС" data-front="ИГРАТЬ"></a>
+
+            <a href="#" onclick="openSettings()" class="btn-flip" data-back="СЕЙЧАС" data-front="НАСТРОЙ"></a>
+
+            <a href="#" onclick="exitGame()" class="btn-flip" data-back="НАВСЕГДА" data-front="Выйди"></a>
         </div>
-      </div>
-    
-    <audio loop id="music" src="./sound/sound.mp3"></audio>
-    
-  </section>
+        <section>
+            <div id="settings-modal" class="modal" onclick="closeSettings()">
+                <div class="box">
+                    <span></span><span></span><span></span>
+                    <div class="modal-content" onclick="event.stopPropagation();">
+                        <span class="close" onclick="closeSettings()">&times;</span>
+                        <h2 class="text_glitch" style="position: relative; top: -100px">НАСТРОЙКИ</h2>
 
-    <div id="game-container" style="display: none;">
-    <div id="background"></div>
-    <div id="choice-container" class="choice-container"></div>
-    <div id="character-left" class="character"></div>
-    <div id="character-right" class="character"></div>
-    <div id="text-box">
-      <div id="character-name"></div>
-      <div id="dialogue-text"></div>
-    </div>
-  </div>
-  <audio id="voice"></audio>
+                        <div class="container-button">
+                            <form>
+                                <label class="toggle">
+                                    <input class="toggle__lever" type="checkbox" name="toggle" role="switch" value="on" id="music-toggle" />
+                                    <figure>
+                                        <h3 class="music-text">Музыка</h3>
+                                    </figure>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <script src="./js/button.js"></script>
-  <script src="./js/story.js"></script>
-  <script src="./js/wow_background.js"></script>
-  <script src="./js/script.js"></script>
-  <script src="js/game.js"></script>
-  <script src="./js/music.js"></script>
-  <script src="./js/textbutton_effect.js"></script>
-</body>
+            <audio loop id="music" src="./sound/sound.mp3"></audio>
+        </section>
 
+        <div id="game-container" style="display: none">
+            <div id="background"></div>
+            <div id="choice-container" class="choice-container"></div>
+            <div id="character-left" class="character"></div>
+            <div id="character-right" class="character"></div>
+            <div id="text-box">
+                <div id="character-name"></div>
+                <div id="dialogue-text"></div>
+            </div>
+        </div>
+        <audio id="voice"></audio>
+
+        <script src="./js/button.js"></script>
+        <script src="./js/story.js"></script>
+        <script src="./js/wow_background.js"></script>
+        <script src="./js/script.js"></script>
+        <script src="js/game.js"></script>
+        <script src="./js/music.js"></script>
+        <script src="./js/textbutton_effect.js"></script>
+    </body>
 </html>
