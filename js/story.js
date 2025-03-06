@@ -2,7 +2,7 @@ const scenes = [
     {
         type: 'plot',
         id: 0,
-        defaultChoiceId: 0,
+        defaultChoiceId: 1337,
         content: [
             {
                 text: 'Brepsi entertainment представляет',
@@ -1018,32 +1018,36 @@ const scenes = [
             },
         ],
     },
-    // {
-    //     type: 'choice',
-    //     id: 999,
-    //     text: 'Ты всегда был тряпкой. Давно надо было сожрать нашу вторую голову.',
-    //     bg: 'url(./image/background/gasstation.jpg)',
-    //     voice: './sound/brothers/3.mp3',
-    //     characterss: [
-    //         {
-    //             name: 'Доржо',
-    //             sprite: './image/png/brothers.png',
-    //             position: 'right',
-    //         },
-    //     ],
-    //     choices: [
-    //         { text: 'Попытаться спасти', next: 'choiceA' },
-    //         { text: 'Уйти', next: 'choiceB' },
-    //     ],
-    // },
-    // //TODO refactor
-    // {
-    //     type: 'choice',
-    //     id: 666,
-    //     content: [
-    //         { text: 'Бёрн', next: 'choiceС' },
-    //         { text: 'Брепси', next: 'choiceD' },
-    //     ],
-    // },
+    {
+        type: 'choice',
+        id: 1337,
+        content: [
+            {
+                text: 'Ты всегда был тряпкой. Давно надо было сожрать нашу вторую голову.',
+                bg: 'url(./image/background/gasstation.jpg)',
+                voice: './sound/brothers/3.mp3',
+                characterss: [
+                    {
+                        name: 'Доржо',
+                        sprite: './image/png/brothers.png',
+                        position: 'right',
+                    },
+                ],
+                choices: [
+                    { text: 'Попытаться спасти', next: 'choiceA' },
+                    { text: 'Уйти', next: 'choiceB' },
+                ],
+            }
+        ]
+    },
+    //TODO refactor
+    {
+        type: 'choice',
+        id: 666,
+        content: [
+            { text: 'Бёрн', next: 'choiceС' },
+            { text: 'Брепси', next: 'choiceD' },
+        ],
+    },
     //TODO а стоит ли выносить в отдельный ключ или указания типа достаточно
 ];

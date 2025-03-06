@@ -17,11 +17,12 @@ function findSceneById(collection, id) {
 }
 
 function addChoice(scenes, id = null) {
-  console.log(1111111);
     const defaultChoiceId = timeLine.at(-1).defaultChoiceId;
+    console.log(defaultChoiceId, "defaulChoiceId");
     const choiceToAdd = id ?? defaultChoiceId;
+    console.log("choicetoAdd", choiceToAdd);
+    console.log("findSceneById(scenes, choiceToAdd)", findSceneById(scenes, choiceToAdd));
     timeLine.push(findSceneById(scenes, choiceToAdd));
-    console.log(timeLine, "timeLine add choice")
 }
 
 function addNextScene(nextSceneId = null, nextChoiceId = null) {
@@ -40,16 +41,13 @@ function addNextScene(nextSceneId = null, nextChoiceId = null) {
     }
 
 function switchToNextSlide(nextId = null) {
-    console.log(' switchToNextSlide switchToNextSlide');
 
     const currentScene = timeLine[currentSceneIndex];
-    console.log(' switchToNextSlide currentScene', currentScene);
 
     if (currentSlideIndex + 1 > currentScene.content.length - 1) {
         currentSceneIndex += 1;
         currentSlideIndex = 0;
     } else currentSlideIndex += 1;
-    console.log('switchToNextSlide currentSlideIndex, currentSceneIndex', currentSlideIndex, currentSceneIndex);
 }
 
 function switchToPrevScene() {
@@ -65,6 +63,7 @@ function getCurrentScene() {
 }
 function getCurrentSlide() {
     const currentScene = getCurrentScene();
+    console.log(currentScene ,"getCurrentSlide() currentscene");
     return currentScene.content[currentSlideIndex];
 }
 //TODO проверка на то что мы уже выбрали и второй раз это делать нинада!!!! не положено!
@@ -79,7 +78,6 @@ function renderSlide() {
     console.log('currentSlide', currentSlide);
 
     currentSlide.characters.forEach((character) => {
-        console.log('character:', character);
 
         const characterPosition = character.position;
         const a = document.querySelector(`#character-${characterPosition}`);
