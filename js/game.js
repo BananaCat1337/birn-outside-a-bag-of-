@@ -37,8 +37,8 @@ function addNextScene(nextSceneId = null, nextChoiceId = null) {
     // addChoice(scenes, nextChoiceId); // мб не нужен потому что выбор теперь тоже сцена
 }
 
-function switchToNextScene(nextId = null) {
-    console.log('switchToNextScene');
+function switchToNextSlide(nextId = null) {
+    console.log('switchToNextSlide');
 
     const currentScene = timeLine[currentSceneIndex];
     console.log('currentScene', currentScene);
@@ -66,6 +66,8 @@ function getCurrentSlide() {
     return currentScene.content[currentSlideIndex];
 }
 //TODO проверка на то что мы уже выбрали и второй раз это делать нинада!!!! не положено!
+
+//TODO  кнопки добавить вперед и только вперед, ещкере, ещё добавить систему укурки, сделать доп проверку для назад, чтобы выбор работал,  
 function renderSlide() {
     //clear previous characters
     document.querySelector('#character-right').style.backgroundImage = '';
@@ -112,7 +114,7 @@ function showChoices(choices) {
 function selectChoice(choiceKey) {
     currentChoicePath = choiceKey;
     document.querySelector('#choice-container').style.display = 'none';
-    switchToNextScene();
+    switchToNextSlide();
     renderSlide();
 }
 
@@ -126,7 +128,7 @@ function closeSettings() {
 document.querySelector('#text-box').addEventListener('click', () => {
     let choiceContainer = document.querySelector('#choice-container');
     if (choiceContainer.style.display === 'flex') return;
-    switchToNextScene();
+    switchToNextSlide();
     renderSlide();
 });
 
