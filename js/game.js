@@ -17,37 +17,39 @@ function findSceneById(collection, id) {
 }
 
 function addChoice(scenes, id = null) {
+  console.log(1111111);
     const defaultChoiceId = timeLine.at(-1).defaultChoiceId;
     const choiceToAdd = id ?? defaultChoiceId;
     timeLine.push(findSceneById(scenes, choiceToAdd));
+    console.log(timeLine, "timeLine add choice")
 }
 
 function addNextScene(nextSceneId = null, nextChoiceId = null) {
     // инициализация первой сцены
-    if (!timeLine.at(-1)) {
+        if (!timeLine.at(-1)) {
         timeLine.push(findSceneById(scenes, 0));
-        // addChoice(plot.choices);
+        addChoice(scenes);
     } else {
         const lastSceneId = timeLine.filter((item) => item.type === 'plot').at(-1).id;
         const sceneToAddId = nextSceneId ?? lastSceneId + 1;
         const sceneToAdd = findSceneById(scenes, sceneToAddId);
         timeLine.push(sceneToAdd);
+        addChoice(scenes, nextChoiceId); // мб не нужен потому что выбор теперь тоже сцена
+      }
+      
     }
 
-    // addChoice(scenes, nextChoiceId); // мб не нужен потому что выбор теперь тоже сцена
-}
-
 function switchToNextSlide(nextId = null) {
-    console.log('switchToNextSlide');
+    console.log(' switchToNextSlide switchToNextSlide');
 
     const currentScene = timeLine[currentSceneIndex];
-    console.log('currentScene', currentScene);
+    console.log(' switchToNextSlide currentScene', currentScene);
 
-    if (currentSlideIndex + 1 > currentScene.content.length) {
+    if (currentSlideIndex + 1 > currentScene.content.length - 1) {
         currentSceneIndex += 1;
         currentSlideIndex = 0;
     } else currentSlideIndex += 1;
-    console.log('currentSlideIndex, currentSceneIndex', currentSlideIndex, currentSceneIndex);
+    console.log('switchToNextSlide currentSlideIndex, currentSceneIndex', currentSlideIndex, currentSceneIndex);
 }
 
 function switchToPrevScene() {
@@ -67,7 +69,7 @@ function getCurrentSlide() {
 }
 //TODO проверка на то что мы уже выбрали и второй раз это делать нинада!!!! не положено!
 
-//TODO  кнопки добавить вперед и только вперед, ещкере, ещё добавить систему укурки, сделать доп проверку для назад, чтобы выбор работал,  
+//TODO  кнопки добавить вперед и только вперед, ещкере, ещё добавить систему укурки, сделать доп проверку для назад, чтобы выбор работал.
 function renderSlide() {
     //clear previous characters
     document.querySelector('#character-right').style.backgroundImage = '';

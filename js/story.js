@@ -679,7 +679,7 @@ const scenes = [
                         name: 'Никита',
                         sprite: './image/png/brothers.png',
                         position: 'right',
-                    },
+                    },  
                 ],
             },
             {
